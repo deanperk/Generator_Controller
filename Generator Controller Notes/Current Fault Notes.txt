@@ -1,0 +1,34 @@
+Current Fault 
+
+The existing (model number?) alternator is capable of a maximum output of
+ 100A at 24V
+The nominal output current should be no more than 80A
+The alternator output is a function of the engine RPM and the system
+ battery bank voltage
+
+In normal operation the running engine RPM will nominally be 2XXX RPM
+3600 RPM is the absolute maximum for the existing engine
+
+Fault Conditions
+	High Current Fault - 
+	 Current levels of 5% above nominal (84A) are allowable for a period of X 
+	  minutes
+	 Current levels of 10% above nominal (88A) are allowable for a period of Y
+	   minutes
+	 A high current fault exists if he above conditions are exceeded
+	 The result of a high current fault is engine shutdown and an alarm contact
+	  closure. A message will be sent to the LCD panel
+	Low Current Fault - output current is <XXA
+      The result of a low current fault is an alarm contact closure and
+       a message sent to the LCD panel.  A current value of 0A suggests
+       is potentially a result of an open circuit (failed connection, circuit breaker
+       opened) and will result in an engine shutdown.
+
+In the first generation of the generator controller the engine RPM may
+ be manually adjusted by the operator by setting an RPM value controlled
+ by a potentiometer mounted on the front panel. Theere is no means
+ to automatically control engine RPM
+
+Future updates to the generator controller could include a means for the
+ controller to automatically adjust the engine RPM to vary the altenator
+ current output. A manual means of adjustment will still be required.

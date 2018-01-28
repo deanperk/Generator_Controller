@@ -1,0 +1,71 @@
+Manual Charging Routine
+	Manual and automatic charging modes will be identical except for the start/end signal
+
+Variables to hold states
+	Mode - operating mode Off, Auto, Manual
+	boolean engineRun - normal RPM or low/zero RPM
+    boolean oilFault - oil level switch fault
+    boolean voltFault - low voltage fault
+    boolean tempFault - system battery overtemp fault
+    boolean currentFault - current is overrange or underrange (see current fault notes)
+    boolean modeFault (not used)
+    boolean fanOn - fan run signal is asserted
+    boolean loadOn - system battery bank connected 
+    boolean startFault - failed to start after 5 attempts
+    boolean fanFault (future feature when a fan signal is available)
+    boolean criticalFault - a fault that will result in a shutdown
+    int runTime - user selkectable via a rotary switch
+
+
+Timer Interrupt
+	1 Hz interrupt (0.1Hz?) will increment a counter named countHour
+
+Manual Start
+ starts with either the momentary start switch or a low voltage threshold
+
+Manual Charging 
+	Manual charge runTime is user selectable or set to 4 hours if low voltage start
+	Immediately after successful start, run a 2 minute engine warm up (no load)
+		During warm up monitor oilFault, disable timer interrupt
+	
+	//Immediatly after start
+	//send warmup message to LCD
+	//    voltage, temperature, RPM, WARMUP
+	//set engineRun = true
+	
+	while (millis + startTime ?){
+	//waiting for 2 minute warmup
+    //check for faults
+	}
+
+
+	Immediately after warm up -
+		reset countHour to 0
+		connect load
+	Continue charging until either the runtime is complete or a fault occurs 
+	During charging loop monitor the mode (no change from manual mode),
+	 fan cooling (turn on or off), voltage, current, temperature, RPM
+	 Read countHour and do schedued tasks - countHour % X = 0
+	 	check faults every 1 minute
+		check fan cooling every 10 minutes
+	 	datalog 1/hr
+	 	decrement runtime every hour
+
+	while ((runTime > 0) && (faults==false) && (mode = manual)){
+	if (countHour % 60 == 0) {
+	//run fault check function
+	   }
+	if (countHour % 600 == 0){
+	//run fan function
+	   }
+	if (countHour % 3600 == 0) {
+	//run datalog function
+    	}
+	} 	
+	//Stop charge
+	//wait for next start sequence or a mode change	
+
+
+
+
+

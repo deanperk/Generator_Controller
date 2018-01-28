@@ -1,0 +1,27 @@
+Generator Data Logging
+
+Components required
+	RTC with battery backup
+	SD Card
+
+Data to Log
+	At power Up
+		Power Up date & time
+		F/W Version 
+	In Off Mode
+		Log Battery Temperature and Voltage 1 time each 24 hours
+	In Manual Mode
+		Log 1st entry at Start Time when manually started or low voltage start
+		Log Battery Temperature, Ambient Temperature, Voltage, Current, and Fan status 1 time each hour with timestamp
+	In Automatic Mode
+		Log 1st entry at Start Time when manually started or low voltage start
+		Log Battery Temperature, Ambient Temperature, Voltage, Current, and Fan status 1 time each hour with timestamp
+
+
+Logged Data Format:
+OFF
+Timestamp | Battery Voltage | Battery Temperature | Ambient Temperature | Fan Status 
+ON
+Timestamp | Engine RPM | Battery Voltage | Battery Current | Battery Temperature | Ambient Temperature | Fan Status 
+
+Other parameters to consider logging - Mode, Manual Runtime

@@ -1,0 +1,33 @@
+Engine Start Notes
+
+Starting in Manual Mode and Automatic Mode is identical except for:
+Manual Mode - engine start signal is the Start Switch Contact Closure
+              If a low battery voltage of <=21V occurs, engine will
+			  start automatically and run for a fixed period of 4 hours
+Automatic Mode - engine start signal is a voltage threshold of <22 V
+
+Start Sequence (create a function for engine start)
+	Determine that no fault conditions exist that prevent START from occuring
+	Enable START ENABLE relay
+	Wait for start switch or start voltage (value? 22 volts?)
+	Turn on Aux Load
+	Close START relay and set START flag (is flag necessary? same as RPM measurement?)
+		maximum START signal time is 5 seconds per attempt with a 2 second
+		rest between attempts
+		After 5 unsuccessful attempts, quit trying and report a START fault
+		Determine success (running or not running) by monitoring RPM
+		RPM >900 is running
+		RPM <400 is cranking
+		RPM >400 <900 is poor running mode
+	If successful START 
+		open START relay and clear START flag
+		Wait for 2 minute engine warm up
+		Close load contactor
+		Turn Off Aux Load (Leave aux load connected the entire time engine is running?)
+	START Sequence is now complete
+	
+			-------------      -------------
+			|			|	   |
+			|			|	   |
+			|			|2 sec |
+	_______ |	5 sec	|______|

@@ -1,0 +1,24 @@
+I/O	Purpose			                    Name	        Type
+---------------------------------------------------------------
+D0	Engine Oil Level Alarm		        oilAlarm        Input
+D1	Engine Start Switch (Mom)	        engineStart	    Input
+D2	Auto/Manual Mode Selector Switc     manual	        Input
+D3	Auto/Manual Mode Selector Switch    automatic	    Input
+D4	Auxillary Load control              auxLoad         Output
+D5	Engine Tachometer		            engineRPM	    Input
+D6	
+D7	Engine Start Relay		            startCommand    Output		
+D8	Alternator Load Contactor	        loadConnect	    Output
+D9	Fault Alarm 			            faultAlarm	    Output
+D10	Start Enable Relay		            startEnable	    Output 
+D11	Manual Runtime  BCD 1               q1              Input                         
+D12 Manual Runtime  BCD 2               q2              Input 
+D13 Manual Runtime  BCD 4               q4              Input
+
+A0  System Ambient Temperature          ambTemperature  Input
+A1  System Battery Temperature          battTemperature Input  
+A2  System Charging Current             battCurrent     Input  
+A3  Cranking Battery Voltage            crankVolts      Input    
+A4  I2C Data                            SDA
+A5  I2C Clock                           SCL
+A6  System Charging Current             battCurrent     Input
